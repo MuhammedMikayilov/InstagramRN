@@ -6,12 +6,11 @@ export const headerStyle = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     marginHorizontal: 20,
-    // flex: 1,
     display: "flex",
   },
 
   logo: {
-    width: 100,
+    width: 120,
     height: 50,
     resizeMode: "contain",
   },

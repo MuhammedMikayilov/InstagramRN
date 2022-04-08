@@ -5,7 +5,7 @@ import { mainStyles } from "./styles";
 
 function HomeScreen() {
   return (
-    <SafeAreaView style={mainStyles.container}>
+    <SafeAreaView>
       <Header />
     </SafeAreaView>
   );
