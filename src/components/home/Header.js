@@ -4,15 +4,22 @@ import { headerStyle } from "./style";
 import { TouchableOpacity } from "react-native";
 import { logo, dmIcon } from "./images";
 import Stories from "./Stories/Stories";
-import { usersService } from "../../api/services/users";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllMessages } from "../../redux/action/directs";
 
-const Header = () => {
-  const [users, setUsers] = React.useState([]);
+const Header = ({ navigation }) => {
+  const { data: users } = useSelector((state) => state.users);
+  const { data: directs } = useSelector((state) => state.directs);
+  const [userLength, setLength] = React.useState(0);
+  const dispatch = useDispatch();
+
   React.useEffect(() => {
-    usersService.getAllUsers().then(({ data }) => {
-      setUsers(data);
-    });
-  }, []);
+    setLength(directs.length);
+  }, [directs]);
+
+  React.useEffect(() => {
+    getAllMessages()(dispatch);
+  }, [dispatch]);
   return (
     <>
       <View style={headerStyle.container}>
@@ -20,15 +27,17 @@ const Header = () => {
           <Image source={logo} style={headerStyle.logo} />
         </TouchableOpacity>
         <View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Directs")}>
             <Image source={dmIcon} style={headerStyle.dmIcon} />
-            <View style={headerStyle.notificationWrapper}>
-              <Text style={headerStyle.notification}>{users.length}</Text>
-            </View>
+            {userLength > 0 && (
+              <View style={headerStyle.notificationWrapper}>
+                <Text style={headerStyle.notification}>{userLength}</Text>
+              </View>
+            )}
           </TouchableOpacity>
         </View>
       </View>
-      <Stories />
+      <Stories users={users} />
     </>
   );
 };

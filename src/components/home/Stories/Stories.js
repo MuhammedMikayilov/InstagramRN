@@ -2,25 +2,25 @@ import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import React from "react";
 import { usersService } from "../../../api/services/users";
 import { storiesStyle } from "./style";
+import { getUsers } from "../../../redux/action/users";
+import { useDispatch, useSelector } from "react-redux";
 
 const Stories = () => {
-  const [users, setUsers] = React.useState([]);
-  const [viewedStories, setViewedStories] = React.useState(false);
+  const dispatch = useDispatch();
+  const { data: users } = useSelector((state) => state.users);
 
   const handleChangeViewStoryState = (item) => {
-    const editted = { ...item, seen: !item.seen };
+    const editted = { ...item, seen: true };
     usersService.updateUser(item.id, editted).then(() => {
       usersService.getAllUsers().then(({ data }) => {
-        setUsers(data);
+        getUsers()(dispatch);
       });
     });
   };
 
   React.useEffect(() => {
-    usersService.getAllUsers().then(({ data }) => {
-      setUsers(data);
-    });
-  }, []);
+    getUsers()(dispatch);
+  }, [dispatch]);
   return (
     <View style={storiesStyle.wrapper}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
