@@ -90,3 +90,31 @@ Once the InstagramRN application is running on your device or emulator, you can 
 - **Profile**: Tap on your own profile picture or username at the bottom tab bar to view your profile. From here, you can edit your profile information, view your posts, and manage your followers and following.
 
 - **Explore**: Tap on the "Explore" icon at the bottom tab bar to discover popular posts from users outside your
+
+ following list.
+
+- **Search**: Access the search functionality by tapping on the "Search" icon at the bottom tab bar. Enter a username to search for a specific user and view their profile.
+
+- **Notifications**: Notifications about new likes, comments, and follows will appear in the notifications tab.
+
+- **Log Out**: To log out of your account, go to the profile screen and tap on the settings icon. From there, select "Log Out" to sign out of your account.
+
+## Dependencies
+
+The InstagramRN application relies on the following major dependencies:
+
+- [React Native](https://reactnative.dev/): A JavaScript framework for building native mobile applications.
+- [Firebase](https://firebase.google.com/): A comprehensive app development platform providing various services, including authentication and database management.
+- [React Navigation](https://reactnavigation.org/): A routing and navigation library for React Native applications.
+
+For a complete list of dependencies and their versions, please refer to the `package.json` file in the repository.
+
+## Contributing
+
+Contributions to the InstagramRN project are welcome! If you find a bug or have a feature suggestion, please open an issue in the [GitHub repository](https://github.com/MuhammedMikayilov/InstagramRN/issues).
+
+If you wish to contribute to the codebase, please follow the guidelines outlined in the [CONTRIBUTING.md](https://github.com/MuhammedMikayilov/InstagramRN/blob/main/CONTRIBUTING.md) file.
+
+## License
+
+The InstagramRN project is open-source and released under the [MIT License](https://opensource.org/licenses/MIT). Feel free to modify and distribute the codebase as per the terms of the license.
